@@ -2,4 +2,3 @@
 set -ex
 
 docker image push "remifilament/odoo:10.0"
-docker image push "remifilament/odoo:latest"

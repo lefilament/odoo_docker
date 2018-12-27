@@ -6,4 +6,5 @@ time docker image build \
     --build-arg BUILD_DATE="$(date --rfc-3339 ns)" \
     --build-arg ODOO_VERSION="10.0" \
     --file "Dockerfile" \
-    --tag "remifilament/odoo" \
+    --tag "remifilament/odoo:10.0" \
+    .
