@@ -1,0 +1,9 @@
+#!/bin/bash
+set -ex
+
+time docker image build \
+    --build-arg VCS_REF="$GIT_SHA1" \
+    --build-arg BUILD_DATE="$(date --rfc-3339 ns)" \
+    --build-arg ODOO_VERSION="10.0" \
+    --file "Dockerfile" \
+    --tag "remifilament/odoo" \
