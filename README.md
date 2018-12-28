@@ -16,7 +16,7 @@ This docker is automatically built on [DockerHub](https://cloud.docker.com/repos
 docker pull remifilament/odoo:10.0
 ```
 
-It can also serve as base for deployments as described in this [GitHub repo still to be created](https://github.com/lefilament/)
+It can also serve as base for deployments as described in this [Ansible role](https://github.com/lefilament/ansible_role_odoo_docker)
 
 
 # Credits
