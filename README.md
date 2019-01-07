@@ -11,7 +11,38 @@ It creates a functional Odoo Docker of limited size (< 400 MB), including Odoo 1
 
 In order to reduce as much as possible the size of the Docker, only French translations are kept and .git directories are removed.
 
-This docker is automatically built on [DockerHub](https://cloud.docker.com/repository/docker/remifilament/odoo) and can be pulled by executing the following command:
+The following OCA addons are included:
+```yaml
+  - repo: account-financial-reporting
+    modules:
+     - account_tax_balance
+  - repo: bank-statement-import
+    modules:
+     - account_bank_statement_import_ofx
+     - account_bank_statement_import_qif
+  - repo: knowledge
+    modules:
+     - document_page
+     - knowledge
+  - repo: partner-contact
+    modules:
+     - partner_firstname
+  - repo: server-tools
+    modules:
+     - date_range
+     - auth_session_timeout
+     - auth_brute_force
+     - password_security
+  - repo: social
+    modules:
+     - mail_restrict_follower_selection
+  - repo: web
+    modules:
+     - web_export_view
+```
+
+
+This docker is automatically built on [DockerHub](https://hub.docker.com/r/remifilament/odoo) and can be pulled by executing the following command:
 ```
 docker pull remifilament/odoo:10.0
 ```
