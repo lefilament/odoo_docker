@@ -33,10 +33,11 @@ RUN set -x; \
             && \
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb &&\
         echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - &&\
-        dpkg --force-depends -i wkhtmltox.deb &&\
+        apt-get install -y --no-install-recommends ./wkhtmltox.deb &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
-        pip3 install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
-        pip3 install simplejson WTForms &&\
+        curl https://bootstrap.pypa.io/get-pip.py | python3 /dev/stdin &&\
+        pip install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
+        pip install simplejson WTForms &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
