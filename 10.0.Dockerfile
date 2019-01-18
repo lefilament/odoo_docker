@@ -12,7 +12,6 @@ RUN set -x; \
             curl \
             fontconfig \
             git \
-            node-less \
             libjpeg62-turbo \
             libtiff5 \ 
             libx11-6 \

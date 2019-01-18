@@ -1,10 +1,20 @@
 #!/bin/bash
 set -ex
 
+# Get Odoo version
+version="$DOCKER_TAG"
+if [ "$version" == latest ]; then
+    version=12.0
+fi
+
+if [ -z "$IMAGE_NAME" ]; then
+    IMAGE_NAME="$DOCKER_REPO:$DOCKER_TAG"
+fi
+
 time docker image build \
     --build-arg VCS_REF="$GIT_SHA1" \
     --build-arg BUILD_DATE="$(date --rfc-3339 ns)" \
-    --build-arg ODOO_VERSION="10.0" \
-    --file "Dockerfile" \
-    --tag "remifilament/odoo:10.0" \
+    --build-arg ODOO_VERSION="$version" \
+    --file "$version.Dockerfile" \
+    --tag "$IMAGE_NAME" \
     .
