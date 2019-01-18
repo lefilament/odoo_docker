@@ -4,7 +4,6 @@ MAINTAINER Le Filament <https://le-filament.com>
 # Generate locale C.UTF-8 for postgres and general locale data
 ENV LANG C.UTF-8
 ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel'
-#ENV APT_DEPS_EXTENDED='binutils build-essential bzip2 cpp cpp-6 dpkg-dev g++ g++-6 gcc gcc-6 libasan3 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libdpkg-perl libexpat1-dev libgcc-6-dev libgomp1 libisl15 libitm1 libldap2-dev libsasl2-dev liblsan0 libmpc3 libmpfr4 libmpx2 libpython3-dev libpython3.5 libpython3.5-dev libquadmath0 libstdc++-6-dev libtsan0 libubsan0 linux-libc-dev make patch python3-dev python3-wheel python3.5-dev'
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
@@ -32,14 +31,12 @@ RUN set -x; \
             xfonts-base \
             xz-utils \
             && \
-#            libfontconfig1 fontconfig-config libx11-data libxau6 libxdmcp6 xfonts-utils ucf fonts-dejavu-core libfontenc1 libxfont1 x11-common xfonts-encodings \
-#            python3 python3-babel python3-dateutil python3-decorator python3-docutils python3-feedparser python3-imaging python3-jinja2 python3-ldap python3-libxslt1 python3-lxml python3-mako python3-mock python3-openid python3-passlib python3-psutil python3-psycopg2 python3-pychart python3-pydot python3-pyparsing python3-pypdf python3-reportlab python3-requests python3-suds python3-tz python3-vatnumber python3-vobject python3-werkzeug python3-xlsxwriter python3-xlwt python3-yaml python3-gevent\
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb &&\
         echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - &&\
         dpkg --force-depends -i wkhtmltox.deb &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
-        pip3.5 install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
-        pip3.5 install simplejson WTForms &&\
+        pip3 install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
+        pip3 install simplejson WTForms &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
