@@ -7,8 +7,6 @@ ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-whee
     PGDATABASE=odoo
 
 RUN set -x; \
-        echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list &&\
-        curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - &&\
         apt-get update &&\
         apt-get install -y --no-install-recommends \
             ca-certificates \
@@ -21,7 +19,6 @@ RUN set -x; \
             libxext6 \
             libxrender1 \
             node-less \
-            postgresql-client \
             python3-pip \
             python3-pyldap \
             python3-qrcode \
@@ -33,9 +30,13 @@ RUN set -x; \
             xfonts-base \
             xz-utils \
             &&\
+        echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list &&\
+        curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - &&\
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb &&\
         echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - &&\
+        apt-get update &&\
         apt-get install -y --no-install-recommends ./wkhtmltox.deb &&\
+        apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         curl https://bootstrap.pypa.io/get-pip.py | python3 /dev/stdin &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
