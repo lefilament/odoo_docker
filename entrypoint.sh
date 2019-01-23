@@ -16,12 +16,21 @@ function check_config() {
     if ! grep -q -E "^\s*\b${param}\b\s*=" /opt/odoo/etc/odoo.conf ; then
         DB_ARGS+=("--${param}")
         DB_ARGS+=("${value}")
-   fi;
+    else 
+	value=`grep "^\s*\b${param}\b\s*=" /opt/odoo/etc/odoo.conf | cut -d "=" -f 2 | xargs`
+    fi;
 }
+value=""
 check_config "db_host" "$HOST"
+export PGHOST=$value
 check_config "db_port" "$PORT"
+export PGPORT=$value
 check_config "db_user" "$USER"
+export PGUSER=$value
 check_config "db_password" "$PASSWORD"
+export PGPASSWORD=$value
+
+psql -qc 'CREATE EXTENSION IF NOT EXISTS unaccent'
 
 case "$1" in
     -- | odoo)

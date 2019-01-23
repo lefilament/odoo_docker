@@ -1,14 +1,16 @@
 FROM debian:stretch
 MAINTAINER Le Filament <https://le-filament.com>
 
-# Generate locale C.UTF-8 for postgres and general locale data
-ENV LANG C.UTF-8
-ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel'
+ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PGDATABASE=odoo
 
-# Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
-        apt-get update \
-        && apt-get install -y --no-install-recommends \
+        echo 'deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main' >> /etc/apt/sources.list.d/postgresql.list &&\
+        curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - &&\
+        apt-get update &&\
+        apt-get install -y --no-install-recommends \
             ca-certificates \
             curl \
             fontconfig \
@@ -30,7 +32,7 @@ RUN set -x; \
             xfonts-75dpi \
             xfonts-base \
             xz-utils \
-            && \
+            &&\
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb &&\
         echo '7e35a63f9db14f93ec7feeb0fce76b30c08f2057 wkhtmltox.deb' | sha1sum -c - &&\
         apt-get install -y --no-install-recommends ./wkhtmltox.deb &&\
@@ -44,7 +46,7 @@ RUN set -x; \
 
 # Install Odoo and remove not French translations and .git directory to limit amount of data used by container
 RUN set -x; \
-        useradd --create-home --home-dir /opt/odoo --no-log-init odoo && \
+        useradd --create-home --home-dir /opt/odoo --no-log-init odoo &&\
         /bin/bash -c "mkdir -p /opt/odoo/{etc,odoo,additional_addons,private_addons,data,private}" &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/OCB.git /opt/odoo/odoo &&\
         rm -rf /opt/odoo/odoo/.git &&\
