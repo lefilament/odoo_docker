@@ -30,13 +30,10 @@ export PGUSER=$value
 check_config "db_password" "$PASSWORD"
 export PGPASSWORD=$value
 
-result="$(psql -qc 'CREATE EXTENSION IF NOT EXISTS unaccent' 2>&1)"
-ok=$?
-if [ $ok -eq 0 -a -z "$result" ]; then
-    echo "INFO Unaccent extension installed"
-elif [ $ok -ne 0 ]; then
-    echo "WARNING Attempt to install unaccent in \
-        $PGDATABASE@$PGHOST failed with this message: $result"
+if ! psql -l | grep $PGDATABASE; then
+	echo "Database $PGDATABASE does not exist"
+else
+        psql -qc 'CREATE EXTENSION IF NOT EXISTS unaccent'
 fi
 
 case "$1" in
