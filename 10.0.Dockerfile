@@ -40,7 +40,7 @@ RUN set -x; \
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.jessie_amd64.deb &&\
         echo '4d104ff338dc2d2083457b3b1e9baab8ddf14202 wkhtmltox.deb' | sha1sum -c - &&\
         apt-get update &&\
-        apt-get install -y --no-install-recommends ./wkhtmltox.deb &&\
+        dpkg --install wkhtmltox.deb &&\
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         curl https://bootstrap.pypa.io/get-pip.py | python /dev/stdin &&\
