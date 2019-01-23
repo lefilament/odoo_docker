@@ -13,6 +13,7 @@ RUN set -x; \
             curl \
             fontconfig \
             git \
+            gnupg \
             libssl1.0-dev \
             libx11-6 \
             libxcb1 \
