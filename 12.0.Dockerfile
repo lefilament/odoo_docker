@@ -1,7 +1,7 @@
 FROM debian:stretch
 MAINTAINER Le Filament <https://le-filament.com>
 
-ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel \
+ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel' \
     LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PGDATABASE=odoo

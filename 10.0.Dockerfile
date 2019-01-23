@@ -3,7 +3,7 @@ MAINTAINER Le Filament <https://le-filament.com>
 
 ENV APT_DEPS='python-dev build-essential libxml2-dev libxslt1-dev libjpeg-dev libfreetype6-dev \
               liblcms2-dev libopenjpeg-dev libtiff5-dev tk-dev tcl-dev linux-headers-amd64 \
-              libpq-dev libldap2-dev libsasl2-dev'
+              libpq-dev libldap2-dev libsasl2-dev' \
     LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PGDATABASE=odoo
