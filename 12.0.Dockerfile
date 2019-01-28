@@ -62,6 +62,12 @@ RUN set -x; \
         mv /tmp/oca-repos/account-financial-reporting/account_tax_balance /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
         mv /tmp/oca-repos/partner-contact/partner_firstname /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/server_brand.git /tmp/oca-repos/server_brand &&\
+        mv /tmp/oca-repos/server_brand/disable_odoo_online /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
+        mv /tmp/oca-repos/social/mail_debrand /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
+        mv /tmp/oca-repos/web/web_responsive /tmp/oca-repos/web/web_environment_ribbon /tmp/oca-repos/web/web_timeline /opt/odoo/additional_addons/ &&\
         rm -rf /tmp/oca-repos/ &&\
         find /opt/odoo/additional_addons/*/i18n/ -type f -not -name 'fr.po' -delete &&\
         chown -R odoo:odoo /opt/odoo 

@@ -79,9 +79,15 @@ RUN set -x; \
            /tmp/oca-repos/server-tools/password_security \
            /opt/odoo/additional_addons/ &&\
         git clone -b 10.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
-        mv /tmp/oca-repos/social/mail_restrict_follower_selection /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/social/mail_debrand \
+           /tmp/oca-repos/social/mail_restrict_follower_selection \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 10.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
-        mv /tmp/oca-repos/web/web_export_view /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/web/web_environment_ribbon \
+           /tmp/oca-repos/web/web_export_view \
+           /tmp/oca-repos/web/web_responsive \
+           /tmp/oca-repos/web/web_timeline \
+           /opt/odoo/additional_addons/ &&\
         rm -rf /tmp/oca-repos/ &&\
         find /opt/odoo/additional_addons/*/i18n/ -type f -not -name 'fr.po' -delete &&\
         chown -R odoo:odoo /opt/odoo 

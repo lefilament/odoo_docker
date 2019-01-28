@@ -40,12 +40,19 @@ The following OCA addons are included (in v10.0, and only the ones followed by *
      - auth_session_timeout
      - auth_brute_force
      - password_security
+  - repo: server-brand (only in v12)
+    modules:
+     - disable_odoo_online
   - repo: social
     modules:
+     - mail_debrand *
      - mail_restrict_follower_selection
   - repo: web
     modules:
+     - web_environment_ribbon *
      - web_export_view
+     - web_responsive *
+     - web_timeline *
 ```
 
 # Usage
