@@ -36,13 +36,16 @@ The following OCA addons are included (in v10.0, and only the ones followed by *
      - partner_firstname *
   - repo: server-tools
     modules:
-     - date_range
+     - date_range (moved to server-ux in v12)
      - auth_session_timeout
      - auth_brute_force
      - password_security
   - repo: server-brand (only in v12)
     modules:
      - disable_odoo_online
+  - repo: server-ux (only in v12)
+    modules:
+     - date_range (was in server-tools in v10)
   - repo: social
     modules:
      - mail_debrand *
