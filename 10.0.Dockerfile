@@ -71,7 +71,9 @@ RUN set -x; \
         git clone -b 10.0 --depth 1 https://github.com/OCA/knowledge.git /tmp/oca-repos/knowledge &&\
         mv /tmp/oca-repos/knowledge/knowledge /tmp/oca-repos/knowledge/document_page /opt/odoo/additional_addons/ &&\
         git clone -b 10.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
-        mv /tmp/oca-repos/partner-contact/partner_firstname /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/partner-contact/partner_firstname \
+           /tmp/oca-repos/partner-contact/partner_disable_gravatar \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 10.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
         mv /tmp/oca-repos/server-tools/date_range \
            /tmp/oca-repos/server-tools/auth_session_timeout \

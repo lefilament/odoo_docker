@@ -61,7 +61,9 @@ RUN set -x; \
         git clone -b 12.0 --depth 1 https://github.com/OCA/account-financial-reporting.git /tmp/oca-repos/account-financial-reporting &&\
         mv /tmp/oca-repos/account-financial-reporting/account_tax_balance /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
-        mv /tmp/oca-repos/partner-contact/partner_firstname /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/partner-contact/partner_firstname \
+           /tmp/oca-repos/partner-contact/partner_disable_gravatar \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
         mv /tmp/oca-repos/server-brand/disable_odoo_online /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
