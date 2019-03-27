@@ -9,6 +9,7 @@ ENV APT_DEPS='python-dev build-essential libxml2-dev libxslt1-dev libjpeg-dev li
     PGDATABASE=odoo
 
 RUN set -x; \
+        sed -Ei 's@(^deb http://deb.debian.org/debian jessie-updates main$)@#\1@' /etc/apt/sources.list &&\
         apt-get update &&\
         apt-get install -y --no-install-recommends \
             ca-certificates \
