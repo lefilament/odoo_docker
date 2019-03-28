@@ -77,7 +77,6 @@ RUN set -x; \
            /opt/odoo/additional_addons/ &&\
         git clone -b 10.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
         mv /tmp/oca-repos/server-tools/date_range \
-           /tmp/oca-repos/server-tools/auth_session_timeout \
            /tmp/oca-repos/server-tools/auth_brute_force \
            /tmp/oca-repos/server-tools/password_security \
            /opt/odoo/additional_addons/ &&\
