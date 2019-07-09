@@ -25,21 +25,25 @@ The following OCA addons are included (in v10.0, and only the ones followed by *
      - account_tax_balance *
   - repo: bank-statement-import
     modules:
-     - account_bank_statement_import_ofx
+     - account_bank_statement_import_ofx *
      - account_bank_statement_import_qif
   - repo: knowledge
     modules:
-     - document_page
-     - knowledge
+     - document_page *
+     - knowledge *
   - repo: partner-contact
     modules:
      - partner_firstname *
+     - partner_disable_gravatar *
+  - repo: server-auth (only in v12)
+    modules:
+     - password_security
   - repo: server-tools
     modules:
      - date_range (moved to server-ux in v12)
      - auth_session_timeout
      - auth_brute_force
-     - password_security
+     - password_security (moved to server-auth in v12)
   - repo: server-brand (only in v12)
     modules:
      - disable_odoo_online
@@ -53,7 +57,7 @@ The following OCA addons are included (in v10.0, and only the ones followed by *
   - repo: web
     modules:
      - web_environment_ribbon *
-     - web_export_view
+     - web_export_view *
      - web_responsive *
      - web_timeline *
 ```

@@ -60,10 +60,16 @@ RUN set -x; \
         mkdir -p /tmp/oca-repos/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/account-financial-reporting.git /tmp/oca-repos/account-financial-reporting &&\
         mv /tmp/oca-repos/account-financial-reporting/account_tax_balance /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/bank-statement-import.git /tmp/oca-repos/bank-statement-import &&\
+        mv /tmp/oca-repos/bank-statement-import/account_bank_statement_import_ofx /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/knowledge.git /tmp/oca-repos/knowledge &&\
+        mv /tmp/oca-repos/knowledge/knowledge /tmp/oca-repos/knowledge/document_page /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
         mv /tmp/oca-repos/partner-contact/partner_firstname \
            /tmp/oca-repos/partner-contact/partner_disable_gravatar \
            /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
+        mv /tmp/oca-repos/server-auth/password_security /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
         mv /tmp/oca-repos/server-brand/disable_odoo_online /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
@@ -71,7 +77,11 @@ RUN set -x; \
         git clone -b 12.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
         mv /tmp/oca-repos/social/mail_debrand /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
-        mv /tmp/oca-repos/web/web_responsive /tmp/oca-repos/web/web_environment_ribbon /tmp/oca-repos/web/web_timeline /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/web/web_responsive \
+           /tmp/oca-repos/web/web_environment_ribbon \
+           /tmp/oca-repos/web/web_export_view \
+           /tmp/oca-repos/web/web_timeline \
+           /opt/odoo/additional_addons/ &&\
         rm -rf /tmp/oca-repos/ &&\
         find /opt/odoo/additional_addons/*/i18n/ -type f -not -name 'fr.po' -delete &&\
         chown -R odoo:odoo /opt/odoo 
