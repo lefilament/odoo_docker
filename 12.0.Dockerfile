@@ -46,6 +46,9 @@ RUN set -x; \
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
 
+# Add Git Known Hosts
+COPY ./ssh_known_git_hosts ~root/.ssh/known_hosts
+
 # Install Odoo and remove not French translations and .git directory to limit amount of data used by container
 RUN set -x; \
         useradd --create-home --home-dir /opt/odoo --no-log-init odoo &&\
