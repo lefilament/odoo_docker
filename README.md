@@ -35,13 +35,14 @@ The following OCA addons are included (in v10.0, and only the ones followed by *
     modules:
      - partner_firstname *
      - partner_disable_gravatar *
-  - repo: server-auth (only in v12)
+  - repo: server-auth (only in v12, modules were in server-tools in v10)
     modules:
+     - auth_session_timeout
      - password_security
   - repo: server-tools
     modules:
      - date_range (moved to server-ux in v12)
-     - auth_session_timeout
+     - auth_session_timeout (moved to server-auth in v12)
      - auth_brute_force
      - password_security (moved to server-auth in v12)
   - repo: server-brand (only in v12)
