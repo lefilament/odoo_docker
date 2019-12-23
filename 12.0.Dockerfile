@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:stretch-slim
 MAINTAINER Le Filament <https://le-filament.com>
 
 ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev python3-dev python3-wheel' \
