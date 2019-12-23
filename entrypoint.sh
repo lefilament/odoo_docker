@@ -17,7 +17,7 @@ function check_config() {
         DB_ARGS+=("--${param}")
         DB_ARGS+=("${value}")
     else 
-	value=`grep "^\s*\b${param}\b\s*=" /opt/odoo/etc/odoo.conf | cut -d "=" -f 2 | xargs`
+        value=`grep "^\s*\b${param}\b\s*=" /opt/odoo/etc/odoo.conf | cut -d "=" -f 2 | xargs`
     fi;
 }
 value=""
