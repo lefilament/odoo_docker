@@ -51,7 +51,7 @@ COPY ./ssh_known_git_hosts ~root/.ssh/known_hosts
 
 # Install Odoo and remove not French translations and .git directory to limit amount of data used by container
 RUN set -x; \
-        useradd --create-home --home-dir /opt/odoo --no-log-init odoo &&\
+        useradd -l --create-home --home-dir /opt/odoo --no-log-init odoo &&\
         /bin/bash -c "mkdir -p /opt/odoo/{etc,odoo,additional_addons,private_addons,data,private}" &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/OCB.git /opt/odoo/odoo &&\
         rm -rf /opt/odoo/odoo/.git &&\
