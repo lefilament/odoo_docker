@@ -76,7 +76,9 @@ RUN set -x; \
            /tmp/oca-repos/server-auth/password_security \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
-        mv /tmp/oca-repos/server-brand/disable_odoo_online /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/server-brand/disable_odoo_online \
+           /tmp/oca-repos/server-brand/remove_odoo_enterprise \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
         mv /tmp/oca-repos/server-ux/date_range /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
