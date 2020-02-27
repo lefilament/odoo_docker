@@ -63,13 +63,28 @@ RUN set -x; \
         mkdir -p /tmp/oca-repos/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/account-financial-reporting.git /tmp/oca-repos/account-financial-reporting &&\
         mv /tmp/oca-repos/account-financial-reporting/account_tax_balance /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/account-financial-tools.git /tmp/oca-repos/account-financial-tools &&\
+        mv /tmp/oca-repos/account-financial-tools/account_lock_date_update \
+           /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/account-invoicing.git /tmp/oca-repos/account-invoicing &&\
+        mv /tmp/oca-repos/account-invoicing/sale_timesheet_invoice_description \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/bank-statement-import.git /tmp/oca-repos/bank-statement-import &&\
         mv /tmp/oca-repos/bank-statement-import/account_bank_statement_import_ofx /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/knowledge.git /tmp/oca-repos/knowledge &&\
         mv /tmp/oca-repos/knowledge/knowledge /tmp/oca-repos/knowledge/document_page /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
-        mv /tmp/oca-repos/partner-contact/partner_firstname \
+        mv /tmp/oca-repos/partner-contact/partner_contact_sale_info_propagation \
            /tmp/oca-repos/partner-contact/partner_disable_gravatar \
+           /tmp/oca-repos/partner-contact/partner_firstname \
+           /tmp/oca-repos/partner-contact/partner_prospect \
+           /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/project.git /tmp/oca-repos/project &&\
+        mv /tmp/oca-repos/project/project_category \
+           /tmp/oca-repos/project/project_status \
+           /tmp/oca-repos/project/project_task_default_stage \
+           /tmp/oca-repos/project/project_template \
+           /tmp/oca-repos/project/project_timeline \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
         mv /tmp/oca-repos/server-auth/auth_session_timeout \
@@ -80,13 +95,18 @@ RUN set -x; \
            /tmp/oca-repos/server-brand/remove_odoo_enterprise \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
-        mv /tmp/oca-repos/server-ux/date_range /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/server-ux/base_technical_features \
+           /tmp/oca-repos/server-ux/date_range \
+           /tmp/oca-repos/server-ux/mass_editing \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
-        mv /tmp/oca-repos/social/mail_debrand /opt/odoo/additional_addons/ &&\
+        mv /tmp/oca-repos/social/base_search_mail_content \
+           /tmp/oca-repos/social/mail_debrand \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
-        mv /tmp/oca-repos/web/web_responsive \
-           /tmp/oca-repos/web/web_environment_ribbon \
+        mv /tmp/oca-repos/web/web_environment_ribbon \
            /tmp/oca-repos/web/web_export_view \
+           /tmp/oca-repos/web/web_responsive \
            /tmp/oca-repos/web/web_timeline \
            /opt/odoo/additional_addons/ &&\
         rm -rf /tmp/oca-repos/ &&\

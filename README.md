@@ -18,49 +18,60 @@ It creates a functional Odoo Docker of limited size (< 400 MB), including Odoo 1
 
 In order to reduce as much as possible the size of the Docker, only French translations are kept and .git directories are removed.
 
-The following OCA addons are included (in v10.0, and only the ones followed by * for v12.0 since not (yet) available):
+The following OCA addons are included (in v12.0):
 ```yaml
   - repo: account-financial-reporting
     modules:
-     - account_tax_balance *
+     - account_tax_balance
+  - repo: account-financial-tools
+    modules:
+     - account_lock_date_update
+  - repo: account-invoicing
+    modules:
+     - sale_timesheet_invoice_description
   - repo: bank-statement-import
     modules:
-     - account_bank_statement_import_ofx *
-     - account_bank_statement_import_qif
+     - account_bank_statement_import_ofx
   - repo: knowledge
     modules:
-     - document_page *
-     - knowledge *
+     - document_page
+     - knowledge
   - repo: partner-contact
     modules:
-     - partner_firstname *
-     - partner_disable_gravatar *
-  - repo: server-auth (only in v12, modules were in server-tools in v10)
+     - partner_contact_sale_info_propagation
+     - partner_disable_gravatar
+     - partner_firstname
+     - partner_prospect
+  - repo: project
+    modules:
+     - project_category
+     - project_status
+     - project_task_default_stage
+     - project_template
+     - project_timeline
+  - repo: server-auth
     modules:
      - auth_session_timeout
      - password_security
-  - repo: server-tools
-    modules:
-     - date_range (moved to server-ux in v12)
-     - auth_session_timeout (moved to server-auth in v12)
-     - auth_brute_force
-     - password_security (moved to server-auth in v12)
-  - repo: server-brand (only in v12)
+  - repo: server-brand
     modules:
      - disable_odoo_online
-  - repo: server-ux (only in v12)
+     - remove_odoo_enterprise
+  - repo: server-ux
     modules:
-     - date_range (was in server-tools in v10)
+     - base_technical_features
+     - date_range
+     - mass_editing
   - repo: social
     modules:
-     - mail_debrand *
-     - mail_restrict_follower_selection
+     - base_search_mail_content
+     - mail_debrand
   - repo: web
     modules:
-     - web_environment_ribbon *
-     - web_export_view *
-     - web_responsive *
-     - web_timeline *
+     - web_environment_ribbon
+     - web_export_view
+     - web_responsive
+     - web_timeline
 ```
 
 # Usage
