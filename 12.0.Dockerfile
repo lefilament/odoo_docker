@@ -74,10 +74,8 @@ RUN set -x; \
         git clone -b 12.0 --depth 1 https://github.com/OCA/knowledge.git /tmp/oca-repos/knowledge &&\
         mv /tmp/oca-repos/knowledge/knowledge /tmp/oca-repos/knowledge/document_page /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
-        mv /tmp/oca-repos/partner-contact/partner_contact_sale_info_propagation \
-           /tmp/oca-repos/partner-contact/partner_disable_gravatar \
+        mv /tmp/oca-repos/partner-contact/partner_disable_gravatar \
            /tmp/oca-repos/partner-contact/partner_firstname \
-           /tmp/oca-repos/partner-contact/partner_prospect \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/project.git /tmp/oca-repos/project &&\
         mv /tmp/oca-repos/project/project_category \
@@ -85,6 +83,10 @@ RUN set -x; \
            /tmp/oca-repos/project/project_task_default_stage \
            /tmp/oca-repos/project/project_template \
            /tmp/oca-repos/project/project_timeline \
+           /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/sale-workflow.git /tmp/oca-repos/sale-workflow &&\
+        mv /tmp/oca-repos/sale-workflow/partner_contact_sale_info_propagation \
+           /tmp/oca-repos/sale-workflow/partner_prospect \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
         mv /tmp/oca-repos/server-auth/auth_session_timeout \

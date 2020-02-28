@@ -38,10 +38,8 @@ The following OCA addons are included (in v12.0):
      - knowledge
   - repo: partner-contact
     modules:
-     - partner_contact_sale_info_propagation
      - partner_disable_gravatar
      - partner_firstname
-     - partner_prospect
   - repo: project
     modules:
      - project_category
@@ -49,6 +47,10 @@ The following OCA addons are included (in v12.0):
      - project_task_default_stage
      - project_template
      - project_timeline
+  - repo: sale-workflow
+    modules:
+     - partner_contact_sale_info_propagation
+     - partner_prospect
   - repo: server-auth
     modules:
      - auth_session_timeout
