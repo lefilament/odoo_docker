@@ -41,7 +41,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         curl https://bootstrap.pypa.io/get-pip.py | python3 /dev/stdin &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
-        pip install simplejson WTForms zxcvbn &&\
+        pip install simplejson WTForms zxcvbn phonenumbers Werkzeug==0.14.1 &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
