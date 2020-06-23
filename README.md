@@ -17,6 +17,7 @@ This Docker is inspired from the ones from [Odoo](https://github.com/odoo/docker
 It creates a functional Odoo Docker of limited size (< 400 MB), including Odoo 10.0 or 12.0 from [OCA/OCB](https://github.com/oca/ocb), and also a few addons from [OCA](https://github.com/oca).
 
 In order to reduce as much as possible the size of the Docker, only French translations are kept and .git directories are removed.
+For people needing other languages than English or French, a 12.0_ml image is also provided.
 
 The following OCA addons are included (in v12.0):
 ```yaml
@@ -81,8 +82,9 @@ The following OCA addons are included (in v12.0):
 
 This docker is automatically built on [DockerHub](https://hub.docker.com/r/lefilament/odoo) and can be pulled by executing the following command:
 ```
-docker pull remifilament/odoo:10.0
-docker pull remifilament/odoo:12.0
+docker pull lefilament/odoo:10.0
+docker pull lefilament/odoo:12.0
+docker pull lefilament/odoo:12.0_ml
 ```
 
 It can also serve as base for deployments as described in this [Ansible role](https://github.com/lefilament/ansible_role_odoo_docker)
