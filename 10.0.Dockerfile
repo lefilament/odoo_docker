@@ -46,7 +46,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         curl https://bootstrap.pypa.io/get-pip.py | python /dev/stdin &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/10.0/requirements.txt &&\
-        pip install simplejson WTForms Werkzeug==0.14.1 &&\
+        pip install simplejson WTForms Werkzeug==0.14.1 setuptools==5.5.1 &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
