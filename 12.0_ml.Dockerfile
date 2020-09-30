@@ -20,6 +20,7 @@ RUN set -x; \
             libxext6 \
             libxrender1 \
             node-less \
+            openssh-client \
             python3-pip \
             python3-pyldap \
             python3-qrcode \
