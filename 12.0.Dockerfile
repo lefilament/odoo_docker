@@ -97,6 +97,9 @@ RUN set -x; \
         mv /tmp/oca-repos/server-brand/disable_odoo_online \
            /tmp/oca-repos/server-brand/remove_odoo_enterprise \
            /opt/odoo/additional_addons/ &&\
+        git clone -b 12.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
+        mv /tmp/oca-repos/server-tools/base_search_fuzzy \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
         mv /tmp/oca-repos/server-ux/base_technical_features \
            /tmp/oca-repos/server-ux/date_range \
