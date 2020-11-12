@@ -25,6 +25,7 @@ RUN set -x; \
             libxrender1 \
             libxslt1.1 \
             node-less \
+            openssh-client \
             python-gevent \
             python-ldap \
             python-qrcode \
