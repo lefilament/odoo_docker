@@ -103,6 +103,7 @@ RUN set -x; \
         mv /tmp/oca-repos/server-ux/base_technical_features \
            /tmp/oca-repos/server-ux/date_range \
            /tmp/oca-repos/server-ux/mass_editing \
+           /tmp/oca-repos/server-ux/mass_operation_abstract \
            /opt/odoo/additional_addons/ &&\
         git clone -b 12.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
         mv /tmp/oca-repos/social/base_search_mail_content \
