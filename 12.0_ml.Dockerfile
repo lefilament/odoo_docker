@@ -40,7 +40,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends ./wkhtmltox.deb &&\
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
-        curl https://bootstrap.pypa.io/get-pip.py | python3 /dev/stdin &&\
+        curl https://bootstrap.pypa.io/pip/3.5/get-pip.py | python3 /dev/stdin &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
         pip install simplejson WTForms zxcvbn phonenumbers Werkzeug==0.14.1 &&\
         apt-get -y purge ${APT_DEPS} &&\

@@ -45,7 +45,7 @@ RUN set -x; \
         dpkg --install wkhtmltox.deb &&\
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
-        curl https://bootstrap.pypa.io/get-pip.py | python /dev/stdin &&\
+        curl https://bootstrap.pypa.io/pip/2.7/get-pip.py | python /dev/stdin &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/10.0/requirements.txt &&\
         pip install simplejson WTForms Werkzeug==0.14.1 &&\
         apt-get -y purge ${APT_DEPS} &&\
