@@ -86,8 +86,8 @@ RUN set -x; \
            /tmp/oca-repos/server-ux/mass_editing \
            /opt/odoo/additional_addons/ &&\
         #git clone -b 14.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
-        #mv /tmp/oca-repos/social/base_search_mail_content \
-           /tmp/oca-repos/social/mail_debrand \
+        mv  /tmp/oca-repos/social/mail_debrand \
+        # /tmp/oca-repos/social/base_search_mail_content \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
         mv /tmp/oca-repos/web/web_environment_ribbon \
