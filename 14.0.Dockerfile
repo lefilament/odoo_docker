@@ -52,8 +52,10 @@ RUN set -x; \
         #git clone -b 14.0 --depth 1 https://github.com/OCA/account-invoicing.git /tmp/oca-repos/account-invoicing &&\
         #mv /tmp/oca-repos/account-invoicing/sale_timesheet_invoice_description \
         #   /opt/odoo/additional_addons/ &&\
-        #git clone -b 14.0 --depth 1 https://github.com/OCA/bank-statement-import.git /tmp/oca-repos/bank-statement-import &&\
-        #mv /tmp/oca-repos/bank-statement-import/account_bank_statement_import_ofx /opt/odoo/additional_addons/ &&\
+        git clone -b 14.0 --depth 1 https://github.com/OCA/bank-statement-import.git /tmp/oca-repos/bank-statement-import &&\
+        mv /tmp/oca-repos/bank-statement-import/account_statement_import \
+           /tmp/oca-repos/bank-statement-import/account_statement_import_ofx \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
         #mv /tmp/oca-repos/partner-contact/partner_disable_gravatar \
         mv /tmp/oca-repos/partner-contact/partner_firstname \
@@ -63,7 +65,7 @@ RUN set -x; \
            /tmp/oca-repos/project/project_status \
            /tmp/oca-repos/project/project_task_default_stage \
            /tmp/oca-repos/project/project_template \
-           #/tmp/oca-repos/project/project_timeline \
+           /tmp/oca-repos/project/project_timeline \
            /opt/odoo/additional_addons/ &&\
         #git clone -b 14.0 --depth 1 https://github.com/OCA/sale-workflow.git /tmp/oca-repos/sale-workflow &&\
         #mv /tmp/oca-repos/sale-workflow/partner_contact_sale_info_propagation \
@@ -71,11 +73,11 @@ RUN set -x; \
         #   /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
         mv /tmp/oca-repos/server-auth/auth_session_timeout \
-        #   /tmp/oca-repos/server-auth/password_security \
+           /tmp/oca-repos/server-auth/password_security \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
         mv /tmp/oca-repos/server-brand/disable_odoo_online \
-        #   /tmp/oca-repos/server-brand/remove_odoo_enterprise \
+           /tmp/oca-repos/server-brand/remove_odoo_enterprise \
            /opt/odoo/additional_addons/ &&\
         #git clone -b 14.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
         #mv /tmp/oca-repos/server-tools/base_search_fuzzy \
