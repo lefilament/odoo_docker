@@ -23,7 +23,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         pip3 install -r https://raw.githubusercontent.com/OCA/OCB/14.0/requirements.txt &&\
-        pip3 install phonenumbers simplejson gevent==20.12.1 &&\ 
+        pip3 install phonenumbers simplejson gevent==20.12.1 zxcvbn &&\ 
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
@@ -72,8 +72,7 @@ RUN set -x; \
         #   /tmp/oca-repos/sale-workflow/partner_prospect \
         #   /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
-        mv /tmp/oca-repos/server-auth/auth_session_timeout \
-           /tmp/oca-repos/server-auth/password_security \
+        mv /tmp/oca-repos/server-auth/password_security \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
         mv /tmp/oca-repos/server-brand/disable_odoo_online \
@@ -86,6 +85,7 @@ RUN set -x; \
         mv /tmp/oca-repos/server-ux/base_technical_features \
            /tmp/oca-repos/server-ux/date_range \
            /tmp/oca-repos/server-ux/mass_editing \
+           /tmp/oca-repos/server-ux/mass_operation_abstract \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
         mv  /tmp/oca-repos/social/mail_debrand \
