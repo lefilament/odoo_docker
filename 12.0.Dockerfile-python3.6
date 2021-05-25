@@ -12,6 +12,8 @@ RUN set -x; \
             curl \
             git \
             gnupg \
+            libxml2 \
+            libxslt1.1 \
             npm \
             openssh-client &&\
         echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' >> /etc/apt/sources.list.d/postgresql.list &&\
@@ -23,7 +25,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         pip install -I -r https://raw.githubusercontent.com/OCA/OCB/12.0/requirements.txt &&\
-        pip install simplejson WTForms zxcvbn PyYAML zxcvbn phonenumbers Werkzeug==0.14.1 &&\
+        pip install simplejson WTForms zxcvbn PyYAML phonenumbers Werkzeug==0.14.1 &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
