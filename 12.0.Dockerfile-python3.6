@@ -1,7 +1,7 @@
-FROM python:3.9-slim-buster
+FROM python:3.6-slim-buster
 MAINTAINER Le Filament <https://le-filament.com>
 
-ENV APT_DEPS='build-essential libldap2-dev libsasl2-dev libpq-dev python3-dev python3-wheel' \
+ENV APT_DEPS='build-essential libjpeg-dev libldap2-dev libsasl2-dev libpq-dev libxml2-dev libxslt1-dev python3-dev python3-wheel zlib1g-dev' \
     LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PGDATABASE=odoo
