@@ -11,9 +11,9 @@ RUN set -x; \
         apt-get install -y --no-install-recommends \
             curl \
             git \
+            gnupg \
             npm \
             openssh-client &&\
-        apt-get install -y --no-install-recommends gnupg &&\
         echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' >> /etc/apt/sources.list.d/postgresql.list &&\
         curl -SL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - &&\
         curl -o wkhtmltox.deb -SL https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb &&\
