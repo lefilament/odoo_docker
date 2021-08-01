@@ -1,0 +1,22 @@
+image: docker:latest
+
+docker-build-master:
+  # Official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -f 12.0.Dockerfile -t "$CI_REGISTRY_IMAGE:12.0" .
+    - docker build --pull -f 12.0_ml.Dockerfile -t "$CI_REGISTRY_IMAGE:12.0_ml" .
+    - docker build --pull -f 12.0_py3.6.Dockerfile -t "$CI_REGISTRY_IMAGE:12.0_py3.6" .
+    - docker build --pull -f 14.0.Dockerfile -t "$CI_REGISTRY_IMAGE:14.0" .
+    - docker push "$CI_REGISTRY_IMAGE:12.0"
+    - docker push "$CI_REGISTRY_IMAGE:12.0_ml"
+    - docker push "$CI_REGISTRY_IMAGE:12.0_py3.6"
+    - docker push "$CI_REGISTRY_IMAGE:14.0"
+  only:
+    - master
+
