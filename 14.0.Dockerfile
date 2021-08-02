@@ -23,7 +23,7 @@ RUN set -x; \
         apt-get install -y --no-install-recommends postgresql-client &&\
         apt-get install -y --no-install-recommends ${APT_DEPS} &&\
         pip3 install -r https://raw.githubusercontent.com/OCA/OCB/14.0/requirements.txt &&\
-        pip3 install phonenumbers simplejson gevent==20.12.1 PyYAML zxcvbn &&\ 
+        pip3 install phonenumbers simplejson gevent==20.12.1 PyYAML zxcvbn &&\
         apt-get -y purge ${APT_DEPS} &&\
         apt-get -y autoremove &&\
         rm -rf /var/lib/apt/lists/* wkhtmltox.deb
@@ -45,10 +45,10 @@ RUN set -x; \
         mkdir -p /tmp/oca-repos/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/account-financial-reporting.git /tmp/oca-repos/account-financial-reporting &&\
         mv /tmp/oca-repos/account-financial-reporting/account_tax_balance /opt/odoo/additional_addons/ &&\
+        git clone -b 14.0 --depth 1 https://github.com/OCA/account-financial-tools.git /tmp/oca-repos/account-financial-tools &&\
+        mv /tmp/oca-repos/account-financial-tools/account_lock_date_update \
+           /opt/odoo/additional_addons/ &&\
         # Comment out modules not yet migrated on OCA for v14
-        #git clone -b 14.0 --depth 1 https://github.com/OCA/account-financial-tools.git /tmp/oca-repos/account-financial-tools &&\
-        #mv /tmp/oca-repos/account-financial-tools/account_lock_date_update \
-        #   /opt/odoo/additional_addons/ &&\
         #git clone -b 14.0 --depth 1 https://github.com/OCA/account-invoicing.git /tmp/oca-repos/account-invoicing &&\
         #mv /tmp/oca-repos/account-invoicing/sale_timesheet_invoice_description \
         #   /opt/odoo/additional_addons/ &&\
@@ -57,7 +57,7 @@ RUN set -x; \
            /tmp/oca-repos/bank-statement-import/account_statement_import_ofx \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/partner-contact.git /tmp/oca-repos/partner-contact &&\
-        #mv /tmp/oca-repos/partner-contact/partner_disable_gravatar \
+        mv /tmp/oca-repos/partner-contact/partner_disable_gravatar \
         mv /tmp/oca-repos/partner-contact/partner_firstname \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/project.git /tmp/oca-repos/project &&\
@@ -67,38 +67,34 @@ RUN set -x; \
            /tmp/oca-repos/project/project_template \
            /tmp/oca-repos/project/project_timeline \
            /opt/odoo/additional_addons/ &&\
-        #git clone -b 14.0 --depth 1 https://github.com/OCA/sale-workflow.git /tmp/oca-repos/sale-workflow &&\
-        #mv /tmp/oca-repos/sale-workflow/partner_contact_sale_info_propagation \
-        #   /tmp/oca-repos/sale-workflow/partner_prospect \
-        #   /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-auth.git /tmp/oca-repos/server-auth &&\
         mv /tmp/oca-repos/server-auth/password_security \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-brand.git /tmp/oca-repos/server-brand &&\
         mv /tmp/oca-repos/server-brand/disable_odoo_online \
+           /tmp/oca-repos/server-brand/portal_odoo_debranding \
            /tmp/oca-repos/server-brand/remove_odoo_enterprise \
            /opt/odoo/additional_addons/ &&\
-        #git clone -b 14.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
-        #mv /tmp/oca-repos/server-tools/base_search_fuzzy \
-        #   /opt/odoo/additional_addons/ &&\
+        git clone -b 14.0 --depth 1 https://github.com/OCA/server-tools.git /tmp/oca-repos/server-tools &&\
+        mv /tmp/oca-repos/server-tools/base_search_fuzzy \
+           /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/server-ux.git /tmp/oca-repos/server-ux &&\
         mv /tmp/oca-repos/server-ux/base_technical_features \
            /tmp/oca-repos/server-ux/date_range \
            /tmp/oca-repos/server-ux/mass_editing \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/social.git /tmp/oca-repos/social &&\
-        mv  /tmp/oca-repos/social/mail_debrand \
-        # /tmp/oca-repos/social/base_search_mail_content \
+        mv /tmp/oca-repos/social/base_search_mail_content \
+           /tmp/oca-repos/social/mail_debrand \
            /opt/odoo/additional_addons/ &&\
         git clone -b 14.0 --depth 1 https://github.com/OCA/web.git /tmp/oca-repos/web &&\
         mv /tmp/oca-repos/web/web_environment_ribbon \
-        #   /tmp/oca-repos/web/web_export_view \
            /tmp/oca-repos/web/web_responsive \
            /tmp/oca-repos/web/web_timeline \
            /opt/odoo/additional_addons/ &&\
         rm -rf /tmp/oca-repos/ &&\
         find /opt/odoo/additional_addons/*/i18n/ -type f -not -name 'fr.po' -delete &&\
-        chown -R odoo:odoo /opt/odoo 
+        chown -R odoo:odoo /opt/odoo
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
