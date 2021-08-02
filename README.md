@@ -1,14 +1,6 @@
-# Basic Odoo docker including OCB 10.0/12.0 and some of OCA repos/addons
+# Basic Odoo docker including OCB 10.0/12.0/14.0 and some of OCA repos/addons
 
-[![](https://images.microbadger.com/badges/image/lefilament/odoo:10.0.svg)](https://microbadger.com/images/lefilament/odoo:10.0 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/lefilament/odoo:10.0.svg)](https://microbadger.com/images/lefilament/odoo:10.0 "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/license/lefilament/odoo:10.0.svg)](https://microbadger.com/images/lefilament/odoo:10.0 "Get your own license badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/lefilament/odoo:10.0.svg)](https://microbadger.com/images/lefilament/odoo:10.0 "Get your own commit badge on microbadger.com")
-
-[![](https://images.microbadger.com/badges/image/lefilament/odoo:12.0.svg)](https://microbadger.com/images/lefilament/odoo:12.0 "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/lefilament/odoo:12.0.svg)](https://microbadger.com/images/lefilament/odoo:12.0 "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/license/lefilament/odoo:12.0.svg)](https://microbadger.com/images/lefilament/odoo:12.0 "Get your own license badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/lefilament/odoo:12.0.svg)](https://microbadger.com/images/lefilament/odoo:12.0 "Get your own commit badge on microbadger.com")
+These docker images are now maintained on [Le Filament GitLab server](https://sources.le-filament.com/lefilament/odoo_docker)
 
 # Description
 
@@ -18,8 +10,9 @@ It creates a functional Odoo Docker of limited size (< 400 MB), including Odoo 1
 
 In order to reduce as much as possible the size of the Docker, only French translations are kept and .git directories are removed.
 For people needing other languages than English or French, a 12.0_ml image is also provided.
+Also, some extra modules may need python 3.6 for Odoo v12 (python 3.5 by default on 12.0 image), therefore a specific 12.0_py3.6 has been created.
 
-The following OCA addons are included (in v12.0):
+The following OCA addons are included by default in this image (in v14.0):
 ```yaml
   - repo: account-financial-reporting
     modules:
@@ -27,16 +20,13 @@ The following OCA addons are included (in v12.0):
   - repo: account-financial-tools
     modules:
      - account_lock_date_update
-  - repo: account-invoicing
-    modules:
-     - sale_timesheet_invoice_description
+  # Not yet approved PR on v14
+  #- repo: account-invoicing
+  #  modules:
+  #   - sale_timesheet_invoice_description
   - repo: bank-statement-import
     modules:
      - account_bank_statement_import_ofx
-  - repo: knowledge
-    modules:
-     - document_page
-     - knowledge
   - repo: partner-contact
     modules:
      - partner_disable_gravatar
@@ -48,17 +38,13 @@ The following OCA addons are included (in v12.0):
      - project_task_default_stage
      - project_template
      - project_timeline
-  - repo: sale-workflow
-    modules:
-     - partner_contact_sale_info_propagation
-     - partner_prospect
   - repo: server-auth
     modules:
-     - auth_session_timeout
      - password_security
   - repo: server-brand
     modules:
      - disable_odoo_online
+     - portal_odoo_debranding
      - remove_odoo_enterprise
   - repo: server-ux
     modules:
@@ -72,7 +58,6 @@ The following OCA addons are included (in v12.0):
   - repo: web
     modules:
      - web_environment_ribbon
-     - web_export_view
      - web_responsive
      - web_timeline
 ```
@@ -80,22 +65,26 @@ The following OCA addons are included (in v12.0):
 # Usage
 
 
-This docker is automatically built on [DockerHub](https://hub.docker.com/r/lefilament/odoo) and can be pulled by executing the following command:
+This docker is built every nigth and pushed on [DockerHub](https://hub.docker.com/r/lefilament/odoo) and can be pulled by executing the following command:
 ```
 docker pull lefilament/odoo:10.0
 docker pull lefilament/odoo:12.0
 docker pull lefilament/odoo:12.0_ml
+docker pull lefilament/odoo:12.0_py3.6
+docker pull lefilament/odoo:14.0
 ```
 
-It can also serve as base for deployments as described in this [Ansible role](https://github.com/lefilament/ansible_role_odoo_docker)
+Note that v10.0 version is not updated nightly like the other ones since there are almost no change on corresponding codes. This 10.0 version might be updated in case security fixes are added to corresponding code.
+
+It can also serve as base for deployments as described in this [Ansible role](https://sources.le-filament.com/lefilament/ansible-roles/docker_odoo)
 
 docker-compose example is provided below:
 ```yaml
 version: "2.1"
 services:
     odoo:
-        image: lefilament/odoo:12.0
-        container_name: odoo12
+        image: lefilament/odoo:14.0
+        container_name: odoo14
         depends_on:
             - db
         tty: true
@@ -106,8 +95,8 @@ services:
             - odoo
 
     db:
-        image: postgres:10-alpine
-        container_name: odoo12_db
+        image: postgres:13-alpine
+        container_name: odoo14_db
         environment:
             POSTGRES_USER: "odoo"
             POSTGRES_PASSWORD: "odoo"
